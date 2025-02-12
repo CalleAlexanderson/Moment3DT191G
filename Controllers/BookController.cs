@@ -66,7 +66,7 @@ namespace Moment3new.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AuthorId"] = new SelectList(_context.Authors, "Id", "Id", book.AuthorId);
+            ViewData["AuthorId"] = new SelectList(_context.Authors, "Id", "Name", book.AuthorId);
             return View(book);
         }
 
@@ -83,7 +83,7 @@ namespace Moment3new.Controllers
             {
                 return NotFound();
             }
-            ViewData["AuthorId"] = new SelectList(_context.Authors, "Id", "Id", book.AuthorId);
+            ViewData["AuthorId"] = new SelectList(_context.Authors, "Id", "Name", book.AuthorId);
             return View(book);
         }
 
@@ -119,7 +119,7 @@ namespace Moment3new.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AuthorId"] = new SelectList(_context.Authors, "Id", "Id", book.AuthorId);
+            ViewData["AuthorId"] = new SelectList(_context.Authors, "Id", "Name", book.AuthorId);
             return View(book);
         }
 

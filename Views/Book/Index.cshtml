@@ -1,15 +1,15 @@
 @model IEnumerable<Moment3.Models.Book>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Böcker";
 }
 
-<h1>Index</h1>
+<h1>Böcker</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Lägg till bok</a>
 </p>
-<table class="table">
+<table>
     <thead>
         <tr>
             <th>
@@ -17,9 +17,6 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Series)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ISBN)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Author)
@@ -37,16 +34,13 @@
                 @Html.DisplayFor(modelItem => item.Series)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ISBN)
-            </td>
-            <td>
                 @* ändrade så författarens namn visas *@
                 @Html.DisplayFor(modelItem => item.Author.Name)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.Id">Ändra</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Info</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Radera</a>
             </td>
         </tr>
 }

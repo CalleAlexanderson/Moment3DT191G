@@ -1,24 +1,24 @@
 @model Moment3.Models.Author
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Info";
 }
 
-<h1>Details</h1>
+<h1>Info</h1>
 
 <div>
-    <h4>Author</h4>
     <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
+    <dl>
+        <dt>
             @Html.DisplayNameFor(model => model.Name)
         </dt>
-        <dd class = "col-sm-10">
+        <dd>
             @Html.DisplayFor(model => model.Name)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Ändra</a> |
+    <a asp-action="Index">Tillbaks till författare</a> |
+                <a asp-action="Delete" asp-route-id="@Model?.Id">Radera</a>
 </div>

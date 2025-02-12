@@ -1,45 +1,44 @@
 @model Moment3.Models.Book
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Lägg till bok";
 }
 
-<h1>Create</h1>
+<h1>Lägg till bok</h1>
 
-<h4>Book</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger"></span>
+<div>
+    <div>
+        <form asp-action="Create" class="create-edit-form">
+            <div asp-validation-summary="ModelOnly"></div>
+            <div>
+                <label asp-for="Title"></label>
+                <input asp-for="Title"/>
+                <span asp-validation-for="Title" class="form-warning"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Series" class="control-label"></label>
-                <input asp-for="Series" class="form-control" />
-                <span asp-validation-for="Series" class="text-danger"></span>
+            <div>
+                <label asp-for="Series"></label>
+                <input asp-for="Series" />
+                <span asp-validation-for="Series" class="form-warning"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="ISBN" class="control-label"></label>
-                <input asp-for="ISBN" class="form-control" />
-                <span asp-validation-for="ISBN" class="text-danger"></span>
+            <div>
+                <label asp-for="ISBN"></label>
+                <input asp-for="ISBN"/>
+                <span asp-validation-for="ISBN" class="form-warning"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="AuthorId" class="control-label"></label>
-                <select asp-for="AuthorId" class ="form-control" asp-items="ViewBag.AuthorId"></select>
+            <div>
+                <label asp-for="AuthorId"></label>
+                <select asp-for="AuthorId" asp-items="ViewBag.AuthorId"></select>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+            <div>
+                <input type="submit" value="Lägg till"/>
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Tillbaks till böcker</a>
 </div>
 
 @section Scripts {
