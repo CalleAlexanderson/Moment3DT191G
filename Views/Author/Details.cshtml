@@ -9,22 +9,26 @@
 <div>
     <hr />
     <dl class="display-cointainer">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Gender)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Gender)
-        </dd>
+        <div>
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+        </div>
+        <div>
+            <dt>
+                @Html.DisplayNameFor(model => model.Gender)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Gender)
+            </dd>
+        </div>
     </dl>
 </div>
 <div class="details-nav">
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Ändra</a> 
-    <a asp-action="Index">Tillbaks till författare</a> 
-                <a asp-action="Delete" asp-route-id="@Model?.Id">Radera</a>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Ändra</a>
+    <a asp-action="Index">Tillbaks till författare</a>
+    <a asp-action="Delete" asp-route-id="@Model?.Id">Radera</a>
 </div>

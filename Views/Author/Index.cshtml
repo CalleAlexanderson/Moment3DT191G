@@ -1,15 +1,15 @@
 @model IEnumerable<Moment3.Models.Author>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Författare";
 }
 
-<h1>Index</h1>
+<h1>Författare</h1>
 
 <p>
-    <a asp-action="Create">Lägg till författare</a>
+    <a asp-action="Create" class="create-link">Lägg till författare</a>
 </p>
-<table>
+<table class="db-showcase">
     <thead>
         <tr>
             <th>
@@ -17,24 +17,27 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Gender)
-                </th>
+            </th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Gender)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Ändra</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Info</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Radera</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gender)
+                </td>
+                <td class="table-nav-td">
+                    <nav class="table-nav">
+                        <a asp-action="Edit" asp-route-id="@item.Id">Ändra</a>
+                        <a asp-action="Details" asp-route-id="@item.Id">Info</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id">Radera</a>
+                    </nav>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

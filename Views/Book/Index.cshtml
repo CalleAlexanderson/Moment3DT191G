@@ -7,9 +7,9 @@
 <h1>Böcker</h1>
 
 <p>
-    <a asp-action="Create">Lägg till bok</a>
+    <a asp-action="Create" class="create-link">Lägg till bok</a>
 </p>
-<table>
+<table class="db-showcase">
     <thead>
         <tr>
             <th>
@@ -25,24 +25,27 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Series)
-            </td>
-            <td>
-                @* ändrade så författarens namn visas *@
-                @Html.DisplayFor(modelItem => item.Author.Name)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Ändra</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Info</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Radera</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Series)
+                </td>
+                <td>
+                    @* ändrade så författarens namn visas *@
+                    @Html.DisplayFor(modelItem => item.Author.Name)
+                </td>
+                <td class="table-nav-td">
+                    <nav class="table-nav">
+                        <a asp-action="Edit" asp-route-id="@item.Id">Ändra</a>
+                        <a asp-action="Details" asp-route-id="@item.Id">Info</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id">Radera</a>
+                    </nav>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
