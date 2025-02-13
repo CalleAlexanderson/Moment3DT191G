@@ -9,7 +9,7 @@
 <h3>Är du säker på att du vill ta bort boken?</h3>
 <div>
     <hr />
-    <dl>
+    <dl class="display-cointainer">
         <dt>
             @Html.DisplayNameFor(model => model.Title)
         </dt>
@@ -38,7 +38,7 @@
     
     <form asp-action="Delete">
         <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Ta bort" /> |
-        <a asp-action="Index">Tillbaks till böcker</a>
+        <input type="submit" value="Ta bort" class="delete-btn" /> 
+        <a asp-action="Index" class="return-link">Tillbaks till böcker</a>
     </form>
 </div>

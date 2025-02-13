@@ -9,7 +9,7 @@
 <h3>Är du säker på att du vill ta bort författaren?</h3>
 <div>
     <hr />
-    <dl>
+    <dl  class="display-cointainer">
         <dt>
             @Html.DisplayNameFor(model => model.Name)
         </dt>
@@ -20,7 +20,7 @@
     
     <form asp-action="Delete">
         <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Ta bort" /> |
-        <a asp-action="Index">Tillbaks till författare</a>
+        <input type="submit" value="Ta bort" class="delete-btn" /> 
+        <a asp-action="Index" class="return-link">Tillbaks till författare</a>
     </form>
 </div>

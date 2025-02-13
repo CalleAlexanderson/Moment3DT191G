@@ -8,7 +8,7 @@
 
 <div>
     <hr />
-    <dl>
+    <dl class="display-cointainer">
         <dt>
             @Html.DisplayNameFor(model => model.Name)
         </dt>
@@ -17,8 +17,8 @@
         </dd>
     </dl>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Ändra</a> |
-    <a asp-action="Index">Tillbaks till författare</a> |
+<div class="details-nav">
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Ändra</a> 
+    <a asp-action="Index">Tillbaks till författare</a> 
                 <a asp-action="Delete" asp-route-id="@Model?.Id">Radera</a>
 </div>
