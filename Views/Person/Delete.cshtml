@@ -1,28 +1,29 @@
 @model Moment3.Models.Person
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Radera";
 }
 
-<h1>Delete</h1>
+<h1>Radera</h1>
 
-<h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>Person</h4>
-    <hr />
-    <dl>
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
+    <dl class="display-cointainer">
+        <div>
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+        </div>
+        <div>
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+            <dd class="person-mail">
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+        </div>
     </dl>
     <form asp-action="Delete">
         <input type="hidden" asp-for="Id" />

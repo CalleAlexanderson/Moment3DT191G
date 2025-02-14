@@ -36,8 +36,10 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Date)
             </td>
-            <td>
-                <a asp-action="Delete" asp-route-id="@item.Id">Radera</a>
+            <td class="borrow-delete-nav">
+                <nav>
+                    <a asp-action="Delete" asp-route-id="@item.Id">Ta bort lån</a>
+                </nav>
             </td>
         </tr>
 }

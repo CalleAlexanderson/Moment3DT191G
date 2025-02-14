@@ -1,35 +1,34 @@
 @model Moment3.Models.Person
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Info";
 }
 
-<h1>Details</h1>
+<h1>Info</h1>
 
 <div>
-    <h4>Person</h4>
-    <hr />
-    <dl>
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
+    <dl class="display-cointainer">
+        <div>
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+        </div>
+        <div>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+            <dd class="person-mail">
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+        </div>
     </dl>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
 <div class="details-nav">
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Ändra</a> 
-    <a asp-action="Index">Tillbaks till Användare</a> 
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Ändra</a>
+    <a asp-action="Index">Tillbaks till Användare</a>
     <a asp-action="Delete" asp-route-id="@Model?.Id">Radera</a>
 </div>

@@ -29,7 +29,17 @@ namespace Moment3new.Controllers
         // GET: Borrow/Create
         public IActionResult Create()
         {
-            ViewData["BookId"] = new SelectList(_context.Books, "Id", "Title");
+            // Tar bort böckerna från select när de redan lånats ut
+            var borrowedBooks = _context.Borrows.ToList();
+            var booksId = new SelectList(_context.Books, "Id", "Title");
+            for (int i = 0; i < borrowedBooks.Count; i++)
+            {
+                booksId = new SelectList(booksId
+                              .Where(x => x.Value != borrowedBooks[i].BookId.ToString())
+                              .ToList(), "Value", "Text");
+            }
+
+            ViewData["BookId"] = booksId;
             ViewData["PersonId"] = new SelectList(_context.Persons, "Id", "Name");
             return View();
         }
@@ -41,10 +51,15 @@ namespace Moment3new.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,PersonId,BookId,Date")] Borrow borrow)
         {
+
             if (ModelState.IsValid)
             {
-                _context.Add(borrow);
-                await _context.SaveChangesAsync();
+                // kollar om någon bok valts annars läggs inte en borrow till i databasen
+                if (borrow.BookId != null)
+                {
+                    _context.Add(borrow);
+                    await _context.SaveChangesAsync();
+                }
                 return RedirectToAction(nameof(Index));
             }
             ViewData["BookId"] = new SelectList(_context.Books, "Id", "Title", borrow.BookId);

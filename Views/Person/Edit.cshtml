@@ -1,16 +1,13 @@
 @model Moment3.Models.Person
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Ändra";
 }
 
-<h1>Edit</h1>
-
-<h4>Person</h4>
-<hr />
+<h1>Ändra</h1>
 <div>
     <div>
-        <form asp-action="Edit">
+        <form asp-action="Edit" class="create-edit-form">
             <div asp-validation-summary="ModelOnly"></div>
             <input type="hidden" asp-for="Id" />
             <div>
@@ -24,14 +21,14 @@
                 <span asp-validation-for="Email"></span>
             </div>
             <div>
-                <input type="submit" value="Save" />
+                <input type="submit" value="Spara" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" class="return-link">Tillbaks till användare</a>
 </div>
 
 @section Scripts {
