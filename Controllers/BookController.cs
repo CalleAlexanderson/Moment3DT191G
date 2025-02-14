@@ -161,5 +161,26 @@ namespace Moment3new.Controllers
         {
             return _context.Books.Any(e => e.Id == id);
         }
+        
+        public async Task<IActionResult> Search([Bind("SearchTitle")] Book book)
+        {
+            var libraryDbContext = _context.Books.Include(b => b.Author);
+            // Hämtar böcker från databas, lägger de i en lista
+            var list = await libraryDbContext.ToListAsync();
+            // skapar tom lista
+            List<Book> filteredList = [];
+            // går igenom listan med böcker
+            for (int i = 0; i < list.Count; i++)
+            {
+                // kollar om söktermen från formuläret matchar någon titel
+                if (book.SearchTitle?.ToLower() == list[i].Title?.ToLower())
+                {
+                    // lägger till boken i den tomma listan
+                    filteredList.Add(list[i]);
+                }
+            }
+            // skickar tillbaka listan med de böcker som matchar sökningen
+            return View(filteredList);
+        }
     }
 }

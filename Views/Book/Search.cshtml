@@ -1,7 +1,7 @@
 @model IEnumerable<Moment3.Models.Book>
 
 @{
-    ViewData["Title"] = "Böcker";
+    ViewData["Title"] = "Search";
 }
 
 <h1>Böcker</h1>
@@ -16,6 +16,10 @@
     <input type="text" name="searchtitle" id="searchtitle">
     <input type="submit" value="Sök" />
 </form>
+
+<p>
+    <a asp-action="Index" class="create-link">Visa alla Böcker</a>
+</p>
 
 <table class="db-showcase">
     <thead>

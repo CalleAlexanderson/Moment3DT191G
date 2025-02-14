@@ -1,5 +1,6 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 namespace Moment3.Models;
 
 public class Book{
@@ -15,4 +16,7 @@ public class Book{
     public int? AuthorId {get; set;}
     [DisplayName("Författare")]
     public Author? Author {get; set;}
+
+    [NotMapped]
+    public string? SearchTitle {get; set;}
 }
