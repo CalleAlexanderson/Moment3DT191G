@@ -6,10 +6,13 @@
 
 <h1>Böcker</h1>
 
+<nav>
+    <a asp-area="" asp-controller="Borrow" asp-action="Index" class="create-link">Utlånade böcker</a>
+</nav>
+
 <p>
     <a asp-action="Create" class="create-link">Lägg till bok</a>
 </p>
-
 
 <form asp-action="Search" class="search-form">
     <label for="searchtitle">Sök bok:</label>

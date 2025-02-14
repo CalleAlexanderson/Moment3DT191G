@@ -26,31 +26,11 @@ namespace Moment3new.Controllers
             return View(await libraryDbContext.ToListAsync());
         }
 
-        // GET: Borrow/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var borrow = await _context.Borrows
-                .Include(b => b.Book)
-                .Include(b => b.Person)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (borrow == null)
-            {
-                return NotFound();
-            }
-
-            return View(borrow);
-        }
-
         // GET: Borrow/Create
         public IActionResult Create()
         {
-            ViewData["BookId"] = new SelectList(_context.Books, "Id", "Id");
-            ViewData["PersonId"] = new SelectList(_context.Persons, "Id", "Id");
+            ViewData["BookId"] = new SelectList(_context.Books, "Id", "Title");
+            ViewData["PersonId"] = new SelectList(_context.Persons, "Id", "Name");
             return View();
         }
 
@@ -67,63 +47,8 @@ namespace Moment3new.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["BookId"] = new SelectList(_context.Books, "Id", "Id", borrow.BookId);
-            ViewData["PersonId"] = new SelectList(_context.Persons, "Id", "Id", borrow.PersonId);
-            return View(borrow);
-        }
-
-        // GET: Borrow/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var borrow = await _context.Borrows.FindAsync(id);
-            if (borrow == null)
-            {
-                return NotFound();
-            }
-            ViewData["BookId"] = new SelectList(_context.Books, "Id", "Id", borrow.BookId);
-            ViewData["PersonId"] = new SelectList(_context.Persons, "Id", "Id", borrow.PersonId);
-            return View(borrow);
-        }
-
-        // POST: Borrow/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,PersonId,BookId,Date")] Borrow borrow)
-        {
-            if (id != borrow.Id)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(borrow);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!BorrowExists(borrow.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["BookId"] = new SelectList(_context.Books, "Id", "Id", borrow.BookId);
-            ViewData["PersonId"] = new SelectList(_context.Persons, "Id", "Id", borrow.PersonId);
+            ViewData["BookId"] = new SelectList(_context.Books, "Id", "Title", borrow.BookId);
+            ViewData["PersonId"] = new SelectList(_context.Persons, "Id", "Name", borrow.PersonId);
             return View(borrow);
         }
 
@@ -160,11 +85,6 @@ namespace Moment3new.Controllers
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
-        }
-
-        private bool BorrowExists(int id)
-        {
-            return _context.Borrows.Any(e => e.Id == id);
         }
     }
 }

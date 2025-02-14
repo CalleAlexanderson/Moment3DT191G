@@ -9,17 +9,17 @@
 <div>
     <h4>Person</h4>
     <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
+    <dl>
+        <dt>
             @Html.DisplayNameFor(model => model.Name)
         </dt>
-        <dd class = "col-sm-10">
+        <dd>
             @Html.DisplayFor(model => model.Name)
         </dd>
-        <dt class = "col-sm-2">
+        <dt>
             @Html.DisplayNameFor(model => model.Email)
         </dt>
-        <dd class = "col-sm-10">
+        <dd>
             @Html.DisplayFor(model => model.Email)
         </dd>
     </dl>
@@ -27,4 +27,9 @@
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
     <a asp-action="Index">Back to List</a>
+</div>
+<div class="details-nav">
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Ändra</a> 
+    <a asp-action="Index">Tillbaks till Användare</a> 
+    <a asp-action="Delete" asp-route-id="@Model?.Id">Radera</a>
 </div>
