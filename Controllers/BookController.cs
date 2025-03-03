@@ -172,8 +172,10 @@ namespace Moment3new.Controllers
             // går igenom listan med böcker
             for (int i = 0; i < list.Count; i++)
             {
+                string searchedWord  = book.SearchTitle.ToLower();
+                string bookTitle = list[i].Title.ToLower();
                 // kollar om söktermen från formuläret matchar någon titel
-                if (book.SearchTitle?.ToLower() == list[i].Title?.ToLower())
+                if (bookTitle.Contains(searchedWord))
                 {
                     // lägger till boken i den tomma listan
                     filteredList.Add(list[i]);
