@@ -60,6 +60,11 @@ namespace Moment3new.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Title,Series,ISBN,AuthorId")] Book book)
         {
+            Console.WriteLine(book.Id);
+            Console.WriteLine(book.Title);
+            Console.WriteLine(book.Series);
+            Console.WriteLine(book.ISBN);
+            Console.WriteLine(book.AuthorId);
             if (ModelState.IsValid)
             {
                 _context.Add(book);

@@ -40,7 +40,7 @@ namespace Moment3new.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("AuthorId")
+                    b.Property<int>("AuthorId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("ISBN")
@@ -66,13 +66,13 @@ namespace Moment3new.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("BookId")
+                    b.Property<int>("BookId")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateOnly>("Date")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("PersonId")
+                    b.Property<int>("PersonId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
@@ -105,7 +105,9 @@ namespace Moment3new.Migrations
                 {
                     b.HasOne("Moment3.Models.Author", "Author")
                         .WithMany()
-                        .HasForeignKey("AuthorId");
+                        .HasForeignKey("AuthorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Author");
                 });
@@ -114,11 +116,15 @@ namespace Moment3new.Migrations
                 {
                     b.HasOne("Moment3.Models.Book", "Book")
                         .WithMany()
-                        .HasForeignKey("BookId");
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Moment3.Models.Person", "Person")
                         .WithMany()
-                        .HasForeignKey("PersonId");
+                        .HasForeignKey("PersonId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Book");
 

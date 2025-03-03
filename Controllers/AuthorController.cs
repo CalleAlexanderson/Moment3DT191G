@@ -130,8 +130,8 @@ namespace Moment3new.Controllers
             {
                 return NotFound();
             }
-
             return View(author);
+            
         }
 
         // POST: Author/Delete/5
